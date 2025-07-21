@@ -14,15 +14,25 @@ function Platform:load()
 end
 
 function Platform:update(dt)
-    self:move(dt)
+    self:move()
+    self:syncPhysics()
 end
 
-function Platform:move(dt)
+function Platform:syncPhysics()
+    self.x, self.y = self.body:getPosition()
+end
+
+function Platform:move()
+
+    local dx, dy = 0, 0
+
     if love.keyboard.isDown("d", "right") then
-        self.x = self.x + self.speed * dt
+        dx = self.speed
     elseif love.keyboard.isDown("a", "left") then
-        self.x = self.x - self.speed * dt
+        dx = -self.speed
     end
+
+    self.body:setLinearVelocity(dx, dy)
 end
 
 function Platform:draw()

@@ -16,6 +16,7 @@ function love.load()
 end
 
 function love.update(dt)
+    world:update(dt)
     Player:update(dt)
     Wall:update(dt)
 end

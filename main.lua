@@ -6,7 +6,7 @@ local SCREEN_WIDTH = love.graphics:getWidth()
 local SCREEN_HEIGHT = love.graphics:getHeight()
 
 function love.load()
-    world = love.physics.newWorld(0, 2000)
+    world = love.physics.newWorld(0, 0)
 
     Player:load()
     Ball:load()
@@ -28,4 +28,12 @@ function love.draw()
     Player:draw()
     Ball:draw()
     Wall.drawAll()
+end
+
+function love.keypressed(key)
+    if key == "r" then
+        love.event.quit("restart")
+    elseif key == "escape" then
+        love.event.quit()
+    end
 end

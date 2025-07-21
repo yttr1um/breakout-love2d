@@ -7,7 +7,7 @@ function Platform:load()
     self.y = love.graphics:getHeight() - 100
     self.speed = 500
 
-    self.body = love.physics.newBody(world, self.x, self.y, "dynamic")
+    self.body = love.physics.newBody(world, self.x, self.y, "kinematic")
     self.body:setFixedRotation(true)
     self.body:setGravityScale(0)
     self.shape = love.physics.newRectangleShape(self.width/2, self.height/2, self.width, self.height)

@@ -1,7 +1,7 @@
 local Platform = {}
 
 function Platform:load()
-    self.width = 200
+    self.width = 150
     self.height = 20
     self.x = love.graphics:getWidth() / 2 - self.width / 2
     self.y = love.graphics:getHeight() - 100

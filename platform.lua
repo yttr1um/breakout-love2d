@@ -9,6 +9,7 @@ function Platform:load()
 
     self.body = love.physics.newBody(world, self.x, self.y, "dynamic")
     self.body:setFixedRotation(true)
+    self.body:setGravityScale(0)
     self.shape = love.physics.newRectangleShape(self.width/2, self.height/2, self.width, self.height)
     self.fixture = love.physics.newFixture(self.body, self.shape)
 end
@@ -24,7 +25,7 @@ end
 
 function Platform:move()
 
-    local dx, dy = 0, 0
+    local dx = 0
 
     if love.keyboard.isDown("d", "right") then
         dx = self.speed
@@ -32,7 +33,7 @@ function Platform:move()
         dx = -self.speed
     end
 
-    self.body:setLinearVelocity(dx, dy)
+    self.body:setLinearVelocity(dx, 0)
 end
 
 function Platform:draw()

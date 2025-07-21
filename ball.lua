@@ -4,16 +4,21 @@ local platform = require("platform")
 
 function Ball:load()
     self.x = love.graphics.getWidth() / 2
-    self.y = platform.y - 20
+    self.y = platform.y - 100
     self.radius = 10
 
     self.body = love.physics.newBody(world, self.x, self.y, "dynamic")
     self.shape = love.physics.newCircleShape(self.radius)
     self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setRestitution(1)
 end
 
 function Ball:update(dt)
+    self:syncPhysics()
+end
 
+function Ball:syncPhysics()
+    self.x, self.y = self.body:getPosition()
 end
 
 function Ball:draw()

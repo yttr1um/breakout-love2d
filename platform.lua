@@ -6,6 +6,11 @@ function Platform:load()
     self.x = love.graphics:getWidth() / 2 - self.width / 2
     self.y = love.graphics:getHeight() - 100
     self.speed = 500
+
+    self.body = love.physics.newBody(world, self.x, self.y, "dynamic")
+    self.body:setFixedRotation(true)
+    self.shape = love.physics.newRectangleShape(self.width/2, self.height/2, self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
 end
 
 function Platform:update(dt)

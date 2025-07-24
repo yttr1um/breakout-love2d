@@ -9,17 +9,20 @@ function Platform:load()
 end
 
 function Platform:update(dt)
-    self:move()
+    self:move(dt)
 end
 
-function Platform:move()
-
-    local dx = 0
-
+function Platform:move(dt)
     if love.keyboard.isDown("d", "right") then
-        dx = self.speed
+        self.x = self.x + self.speed * dt
     elseif love.keyboard.isDown("a", "left") then
-        dx = -self.speed
+        self.x = self.x - self.speed * dt
+    end
+
+    if self.x < 0 then
+        self.x = 0
+    elseif self.x + self.width > love.graphics.getWidth() then
+        self.x = love.graphics.getWidth() - self.width
     end
 end
 

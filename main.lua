@@ -6,7 +6,6 @@ local SCREEN_WIDTH = love.graphics:getWidth()
 local SCREEN_HEIGHT = love.graphics:getHeight()
 
 function love.load()
-    world = love.physics.newWorld(0, 0)
 
     Player:load()
     Ball:load()
@@ -18,7 +17,6 @@ function love.load()
 end
 
 function love.update(dt)
-    world:update(dt)
     Player:update(dt)
     Ball:update(dt)
     Wall:update(dt)

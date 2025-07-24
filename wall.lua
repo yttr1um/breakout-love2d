@@ -9,11 +9,6 @@ function Wall.new(x, y, width, height)
     instance.y = y
     instance.width = width
     instance.height = height
-
-    instance.body = love.physics.newBody(world, instance.x, instance.y, "static")
-    instance.shape = love.physics.newRectangleShape(instance.width/2, instance.height/2, instance.width, instance.height)
-    instance.fixture = love.physics.newFixture(instance.body, instance.shape)
-
     table.insert(walls, instance)
 end
 

@@ -9,7 +9,7 @@ function love.load()
     Player:load()
     Ball:load()
     Brick:load()
-    
+
 end
 
 function love.update(dt)
@@ -22,6 +22,8 @@ function love.draw()
     Player:draw()
     Ball:draw()
     Brick.drawAll()
+
+    love.graphics.printf("score: "..Player.score, love.graphics.newFont(32), 20, 20, love.graphics.getWidth())
 end
 
 function checkCollision(a, b)

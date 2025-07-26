@@ -7,6 +7,7 @@ Brick.width = 75
 Brick.height = 30
 
 local Ball = require("ball")
+local Player = require("platform")
 
 function Brick.new(x, y)
     local instance = setmetatable({}, Brick)
@@ -50,6 +51,7 @@ function Brick:collide()
         local collisionPosition = middleBall - middleBrick
         Ball.xVel =  collisionPosition * 5
         self:remove()
+        Player.score = Player.score + 50
     end
 end
 

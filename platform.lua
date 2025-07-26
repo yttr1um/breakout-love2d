@@ -6,6 +6,7 @@ function Platform:load()
     self.x = love.graphics:getWidth() / 2 - self.width / 2
     self.y = love.graphics:getHeight() - 100
     self.speed = 500
+    self.score = 0
 end
 
 function Platform:update(dt)

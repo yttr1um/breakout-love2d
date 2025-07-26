@@ -1,7 +1,6 @@
 local Ball = {}
 
 local platform = require("platform")
-local Brick = require("bricks")
 
 function Ball:load()
     self.x = love.graphics.getWidth() / 2

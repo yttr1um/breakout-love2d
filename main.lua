@@ -8,17 +8,8 @@ function love.load()
 
     Player:load()
     Ball:load()
-
-    --bricks
-    local y = 100
-    for i = 1, 4 do
-        local x = 20
-        while x < SCREEN_WIDTH - 20 do
-            Brick.new(x, y)
-            x = x + Brick.width + 1
-        end
-        y = y + Brick.height + 5
-    end
+    Brick:load()
+    
 end
 
 function love.update(dt)

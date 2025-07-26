@@ -6,6 +6,8 @@ local ActiveBricks = {}
 Brick.width = 75
 Brick.height = 30
 
+local Ball = require("ball")
+
 function Brick.new(x, y)
     local instance = setmetatable({}, Brick)
     instance.x = x
@@ -13,6 +15,18 @@ function Brick.new(x, y)
     instance.toBeRemoved = false
 
     table.insert(ActiveBricks, instance)
+end
+
+function Brick:load()
+    local y = 100
+    for i = 1, 4 do
+        local x = 20
+        while x < SCREEN_WIDTH - 20 do
+            Brick.new(x, y)
+            x = x + Brick.width + 1
+        end
+        y = y + Brick.height + 5
+    end
 end
 
 function Brick:remove()
@@ -25,6 +39,18 @@ end
 
 function Brick:update(dt)
     self:checkRemove()
+    self:collide()
+end
+
+function Brick:collide()
+    if checkCollision(Ball, self) then
+        Ball.yVel = Ball.speed
+        local middleBall = Ball.x + Ball.width / 2
+        local middleBrick = self.x + self.width / 2
+        local collisionPosition = middleBall - middleBrick
+        Ball.xVel =  collisionPosition * 5
+        self:remove()
+    end
 end
 
 function Brick:checkRemove()
